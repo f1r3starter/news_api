@@ -2,7 +2,7 @@
 
 namespace app\modules\api\v1\controllers;
 
-use app\models\v1\Posts;
+use app\modules\api\v1\models\Posts;
 
 class PostController extends Rest
 {

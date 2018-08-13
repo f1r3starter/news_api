@@ -2,14 +2,14 @@
 
 namespace app\bootstrap;
 
-use app\events\ClearCacheEvent;
-use app\events\EventDispatcher;
-use app\forms\PostForm;
-use app\listeners\CacheChangeListener;
-use app\repositories\CategoryRepositoryInterface;
-use app\repositories\CategoryRepositorySql;
-use app\repositories\PostRepositoryInterface;
-use app\repositories\PostRepositorySql;
+use app\modules\api\v2\events\ClearCacheEvent;
+use app\modules\api\v2\events\EventDispatcher;
+use app\modules\api\v2\forms\PostForm;
+use app\modules\api\v2\listeners\CacheChangeListener;
+use app\modules\api\v2\repositories\CategoryRepositoryInterface;
+use app\modules\api\v2\repositories\CategoryRepositorySql;
+use app\modules\api\v2\repositories\PostRepositoryInterface;
+use app\modules\api\v2\repositories\PostRepositorySql;
 use yii\base\BootstrapInterface;
 use Yii;
 use yii\caching\CacheInterface;
@@ -28,9 +28,9 @@ class Bootstrap implements BootstrapInterface
         $container = Yii::$container;
 
         $container->setSingleton(Connection::class, [
-            'dsn' => 'mysql:host=127.0.0.1;dbname=news_site',
+            'dsn' => 'mysql:host=db;dbname=yii',
             'username' => 'root',
-            'password' => 'zxcvbnm',
+            'password' => 'secretpass',
             'charset' => 'utf8',
         ]);
 

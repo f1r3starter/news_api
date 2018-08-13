@@ -1,8 +1,8 @@
 <?php
 
-namespace app\listeners;
+namespace app\modules\api\v2\listeners;
 
-use app\events\ClearCacheEvent;
+use app\modules\api\v2\events\ClearCacheEvent;
 use yii\caching\CacheInterface;
 use yii\caching\TagDependency;
 

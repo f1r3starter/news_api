@@ -10,6 +10,8 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log', 'app\bootstrap\Bootstrap'],
+    'controllerNamespace' => 'app\controllers',
+    'defaultRoute' => 'site/index',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
@@ -21,8 +23,7 @@ $config = [
     ],
     'components' => [
         'request' => [
-            // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'K0Rly-7FP6bfx2WcmHG447aR0qVbz7Ud',
+            'enableCookieValidation' => false,
             'parsers' => ['application/json' => 'yii\web\JsonParser'],
         ],
         'response' => [
@@ -52,8 +53,9 @@ $config = [
             'enableStrictParsing' => true,
             'showScriptName' => false,
             'rules' => [
+                '' => 'site/index',
                 ['class' => UrlRule::class, 'controller' => ['api/v1/post', 'api/v2/post'], 'only' => ['index', 'create', 'delete', 'update', 'view'], 'pluralize' => true],
-                ['class' => UrlRule::class, 'controller' => 'api/[v1|v2]/category', 'only' => ['index'], 'pluralize' => true],
+                ['class' => UrlRule::class, 'controller' => ['api/v1/category', 'api/v2/category'], 'only' => ['index'], 'pluralize' => true],
             ],
         ]
     ],

@@ -2,7 +2,7 @@
 
 namespace app\modules\api\v1\controllers;
 
-use app\models\v1\Categories;
+use app\modules\api\v1\models\Categories;
 
 class CategoryController extends Rest
 {

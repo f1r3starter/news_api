@@ -2,7 +2,7 @@
 
 namespace app\modules\api\v2\controllers;
 
-use app\services\CategoryService;
+use app\modules\api\v2\services\CategoryService;
 use yii\rest\Controller;
 use yii\web\Request;
 

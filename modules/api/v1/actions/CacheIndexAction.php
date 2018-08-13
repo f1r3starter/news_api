@@ -2,7 +2,7 @@
 
 namespace app\modules\api\v1\actions;
 
-use app\models\v1\Cacheable;
+use app\modules\api\v1\models\Cacheable;
 use yii\caching\TagDependency;
 use yii\data\ActiveDataProvider;
 use yii\rest\IndexAction;

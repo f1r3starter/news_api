@@ -1,8 +1,9 @@
 <?php
 
-namespace app\models\v1;
+namespace app\modules\api\v1\models;
 
-interface Cacheable {
+interface Cacheable
+{
     public static function getTagDependencyLabel(): string;
 
     public static function getCachePrefix(): string;

@@ -2,51 +2,32 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
-use yii\helpers\Url;
+$this->title = 'REST';
 ?>
 <div class="site-index">
 
     <div class="jumbotron">
-        <h1>Congratulations!</h1>
+        <h1>Rest API для создания статей и категорий статей</h1>
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
+        <p class="lead">Доступны методы:</p>
 
-        <p><a class="btn btn-lg btn-success" href="<?=Url::toRoute('v1/post/index')?>">Get started with Yii</a></p>
+        <ul class="list-group">
+            <li class="list-group-item">GET /api/[v1|v2]/posts</li>
+            <li class="list-group-item">POST /api/[v1|v2]/posts</li>
+            <li class="list-group-item">PUT /api/[v1|v2]/posts/{id}</li>
+            <li class="list-group-item">DELETE /api/[v1|v2]/posts/{id}</li>
+            <li class="list-group-item">GET /api/[v1|v2]/categories</li>
+        </ul>
     </div>
 
     <div class="body-content">
 
         <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
+            <div class="col-lg-6">
+                <p>В проекте присутствует две версии API. Первая сделана чисто средствами Yii. Преимуществами такого подхода является быстрота и простота разработки. Недостатками - высокая связанность классов и использование встроенного сервис локатора. Так же данное решение очень зависимо от самого фреймворка и от ActiveRecord. </p>
             </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
+            <div class="col-lg-6">
+                <p>Вторая версия ближе к DDD. Использует DI (файл Bootstrap), что значительно уменьшает неявные зависимости от сервис локатора. Работа с данными вынесена в репозитории, чистый sql был выбран просто чтобы реализовать репозиторий без ActiveRecord, можно использовать любую ORM, реализуя интерфейс репозитория. Валидация реализована с помощью чистой модели Yii, без ActiveRecord. Кеширование происходит в слое сервисов, инвалидация кеша реализована с помощью ивентов, которые передаются диспатчером нужному слушателю. В целом, такой подход значительно усложнил приложение, зато сделал код более фреймворконезависимым.</p>
             </div>
         </div>
 

@@ -2,8 +2,8 @@
 
 namespace app\modules\api\v2\controllers;
 
-use app\forms\PostForm;
-use app\services\PostService;
+use app\modules\api\v2\forms\PostForm;
+use app\modules\api\v2\services\PostService;
 use yii\rest\Controller;
 use yii\web\Request;
 
@@ -14,8 +14,14 @@ class PostController extends Controller
     private $request;
     private static $defaultLimit = 20;
 
-    public function __construct($id, $module, PostService $postService, PostForm $postForm, Request $request, $config = [])
-    {
+    public function __construct(
+        $id,
+        $module,
+        PostService $postService,
+        PostForm $postForm,
+        Request $request,
+        $config = []
+    ) {
         $this->postService = $postService;
         $this->postForm = $postForm;
         $this->request = $request;

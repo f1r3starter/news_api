@@ -1,11 +1,11 @@
 <?php
 
-namespace app\services;
+namespace app\modules\api\v2\services;
 
-use app\events\ClearCacheEvent;
-use app\events\EventDispatcher;
-use app\forms\CategoryForm;
-use app\repositories\CategoryRepositoryInterface;
+use app\modules\api\v2\events\ClearCacheEvent;
+use app\modules\api\v2\events\EventDispatcher;
+use app\modules\api\v2\forms\CategoryForm;
+use app\modules\api\v2\repositories\CategoryRepositoryInterface;
 use yii\caching\CacheInterface;
 use yii\caching\TagDependency;
 
@@ -25,8 +25,11 @@ class CategoryService
         return 'categories_cache';
     }
 
-    public function __construct(CategoryRepositoryInterface $postRepository, EventDispatcher $eventDispatcher, CacheInterface $cache)
-    {
+    public function __construct(
+        CategoryRepositoryInterface $postRepository,
+        EventDispatcher $eventDispatcher,
+        CacheInterface $cache
+    ) {
         $this->categoryRepository = $postRepository;
         $this->eventDispatcher = $eventDispatcher;
         $this->cache = $cache;
@@ -52,8 +55,9 @@ class CategoryService
 
     public function listCategories(int $from, int $limit)
     {
-        return $this->cache->getOrSet([self::getCachePrefix(), 'from' => $from, 'limit' => $limit], function () use ($from, $limit) {
-            return $this->categoryRepository->show($from, $limit);
-        }, null, new TagDependency(['tags' => self::getTagDependencyLabel()]));
+        return $this->cache->getOrSet([self::getCachePrefix(), 'from' => $from, 'limit' => $limit],
+            function () use ($from, $limit) {
+                return $this->categoryRepository->show($from, $limit);
+            }, null, new TagDependency(['tags' => self::getTagDependencyLabel()]));
     }
 }

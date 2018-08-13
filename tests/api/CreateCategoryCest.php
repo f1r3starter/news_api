@@ -1,7 +1,7 @@
 <?php
 
 
-class CreatePostCest
+class CreateCategoryCest
 {
     /**
      * @var \Faker\Generator
@@ -17,16 +17,15 @@ class CreatePostCest
     }
 
     // tests
-    public function createPostViaAPI(\ApiTester $I)
+    public function CreateCategoryViaAPI(\ApiTester $I)
     {
         $randomTitle = $this->faker->name;
-        $I->sendPOST('http://localhost:8000/api/v1/posts', ['title' => $randomTitle, 'content' => 'blah', 'category_id' => 1]);
+        $I->sendPOST('http://localhost:8000/api/v1/categories', ['name' => $randomTitle]);
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::CREATED);
         $I->seeResponseIsJson();
         $I->seeResponseContains($randomTitle);
-        $I->sendGET('http://localhost:8000/api/v1/posts');
+        $I->sendGET('http://localhost:8000/api/v1/categories');
         $I->seeResponseContains($randomTitle);
     }
-
 
 }

@@ -1,10 +1,11 @@
 <?php
 
-namespace app\events;
+namespace app\modules\api\v2\events;
 
 use yii\base\Event;
 
-class ClearCacheEvent extends Event {
+class ClearCacheEvent extends Event
+{
     private $cacheTags;
 
     public function __construct(array $cacheTags, array $config = [])

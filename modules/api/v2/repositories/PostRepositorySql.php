@@ -1,6 +1,6 @@
 <?php
 
-namespace app\repositories;
+namespace app\modules\api\v2\repositories;
 
 use yii\caching\CacheInterface;
 use yii\db\Connection;
@@ -48,6 +48,7 @@ class PostRepositorySql implements PostRepositoryInterface
 
     public function show(int $from, int $limit)
     {
-        return $this->db->createCommand('SELECT * FROM posts LIMIT :from, :limit', [':from' => $from, ':limit' => $limit])->queryAll();
+        return $this->db->createCommand('SELECT * FROM posts LIMIT :from, :limit',
+            [':from' => $from, ':limit' => $limit])->queryAll();
     }
 }

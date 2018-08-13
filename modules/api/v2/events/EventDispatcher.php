@@ -1,6 +1,6 @@
 <?php
 
-namespace app\events;
+namespace app\modules\api\v2\events;
 
 use yii\base\Component;
 

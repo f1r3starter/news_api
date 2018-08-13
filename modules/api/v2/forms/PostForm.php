@@ -1,13 +1,12 @@
 <?php
 
-namespace app\forms;
+namespace app\modules\api\v2\forms;
 
-use app\repositories\CategoryRepositorySql;
+use app\modules\api\v2\repositories\CategoryRepositorySql;
 use yii\base\Model;
 
 class PostForm extends Model
 {
-
     public $id;
     public $category_id;
     public $title;
@@ -26,11 +25,14 @@ class PostForm extends Model
             [['category_id'], 'required'],
             [['category_id'], 'integer'],
             [['title', 'content'], 'string', 'max' => 255],
-            [['category_id'], function ($attribute) {
-                if (!$this->categoryRepository->find($this->$attribute)) {
-                    $this->addError($attribute, 'Category ID is invalid.');
+            [
+                ['category_id'],
+                function ($attribute) {
+                    if (!$this->categoryRepository->find($this->$attribute)) {
+                        $this->addError($attribute, 'Category ID is invalid.');
+                    }
                 }
-            }],
+            ],
         ];
     }
 

@@ -1,12 +1,11 @@
 <?php
 
-namespace app\forms;
+namespace app\modules\api\v2\forms;
 
 use yii\base\Model;
 
 class CategoryForm extends Model
 {
-
     public $id;
     public $name;
 

@@ -10,13 +10,14 @@ class SiteController extends Controller
     {
         return [
             'error' => [
-                'class' => Rest,
+                'class' => 'yii\web\ErrorAction',
             ],
         ];
     }
 
     public function actionIndex()
     {
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_HTML;
         return $this->render('index');
     }
 }
